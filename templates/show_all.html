@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang = "en">
+   <head>
+      <title>Mapusa_Library-Portal</title>
+      <link rel="stylesheet" href="{{ url_for('static', filename='css/show.css') }}">
+      <link href="https://fonts.googleapis.com/css?family=Jua|Pacifico" rel="stylesheet">
+   </head>
+   <body>
+      
+      <div class = 'header'>
+      <h3>
+         <a href = "{{ url_for('show_all') }}">Homepage</a>
+         <a href = "https://www.amazon.in">Amazon</a>
+         <a href = "https://www.flipkart.com">Flipkart</a>
+         <a href = "https://www.goodreads.com">Good Reads</a>
+      </h3>
+
+      </div>
+      
+     <hr/>
+      {%- for message in get_flashed_messages() %}
+         <h4>{{ message }}</h4>
+      {%- endfor %}
+		
+      <h1>Books</h1>
+      <h2>(Total:{{ lastbook }})</h2>
+
+      <h3>
+         (<a href = "/new">Add Book</a>)
+         (<a href = "/delete">Delete Book</a>)
+         (<a href = "/find">Find Book</a>)
+         (<a href = "/camera">Smart Scan</a>)
+         <a href = "/logout" style="float:right" >Logout</a>
+      </h3>  
+      
+      <table>
+         <thead>
+            <tr>
+               <th>Name</th>
+               <th>Author</th>
+               <th>Binding</th>
+               <th>Publisher</th>
+               <th>ISBN</th>
+               <th>Room</th>
+               <th>Cupboard</th>
+               <th>Location</th>
+            </tr>
+         </thead>
+         
+         <tbody>
+            {% for book in books %}
+               <tr>
+                  <td><a href='https://www.google.com/search?q={{book.name}} book' >{{ book.name }}</a></td>
+                  <td>{{ book.author }}</td>
+                  <td>{{ book.binding }}</td>
+                  <td>{{ book.publisher }}</td>
+                  <td>{{ book.ISBN }}</td>
+                  <td>{{ book.room }}</td>
+                  <td>{{ book.cupboard }}</td>
+                  <td>{{ book.location }}</td>
+               </tr>
+            {% endfor %}
+         </tbody>
+      </table>
+      
+   </body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+   <body>
+   
+      <h2>Add a Book</h2>
+      <hr/>
+      
+      {%- for category, message in get_flashed_messages(with_categories = true) %}
+         <div class = "alert alert-danger">
+            {{ message }}
+         </div>
+      {%- endfor %}
+      
+      <form action = "{{ request.path }}" method = "post">
+         {% if book_details|length == 0 %}
+            <input type = "text" autofocus name = "name" placeholder = "Name">
+            <input type = "text" name = "author" placeholder = "Author" >
+            <input type = "text" name = "binding" placeholder= "Binding">
+            <input type = "text" name = "publisher" placeholder = "Publisher" >
+            <input type = "text" name = "ISBN" placeholder = "ISBN_number" ><br>
+            <input type = "text" name = "room" placeholder = "Room" >
+            <input type = "text" name = "cupboard" placeholder = "Cupboard_number" >
+            <input type = "text" name = "location" placeholder = "Location" ><br>
+            <input type = "submit" value = "Add Book">
+         {% else %}
+            <input type = "text" autofocus name = "name" placeholder = "Name" value = "{{ book_details['Full Title'] }}" >
+            <input type = "text" name = "author" placeholder = "Author" value = "{{ book_details['Authors'] }}" >
+            <input type = "text" name = "binding" placeholder= "Binding" value = "{{ book_details['Binding'] }}" >
+            <input type = "text" name = "publisher" placeholder = "Publisher" value = "{{ book_details['Publisher'] }}"  >
+            <input type = "text" name = "ISBN" placeholder = "ISBN_number" value = "{{ book_details['ISBN13'] }}" ><br>
+            <input type = "text" name = "room" placeholder = "Room" >
+            <input type = "text" name = "cupboard" placeholder = "Cupboard_number" >
+            <input type = "text" name = "location" placeholder = "Location" ><br>
+            <input type = "submit" value = "Add Book">
+         {% endif %}      
+
+
+        
+      </form>
+      
+   </body>
+</html>

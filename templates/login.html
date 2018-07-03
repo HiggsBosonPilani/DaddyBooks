@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/log_in.css') }}">
+	<title>Login</title>
+	</head>
+	<body>
+	{% if session['logged_in'] %}
+		<p>You're logged in already!</p>
+	{% else %}
+
+		<form action="/login" method="POST">
+	<div class="login">
+		<div class="login-screen">
+			<div class="app-title">
+				<h1>Mapusa Library</h1>
+				{%- for message in get_flashed_messages() %}
+        			<h4>{{ message }}</h4>
+      			{%- endfor %}
+			</div>
+ 
+			<div class="login-form">
+				<div class="control-group">
+				<input type="text" class="login-field" value="" placeholder="username" name="username" autofocus>
+				<label class="login-field-icon fui-user" for="login-name"></label>
+				</div>
+ 
+				<div class="control-group">
+				<input type="password" class="login-field" value="" placeholder="password" name="password">
+				<label class="login-field-icon fui-lock" for="login-pass"></label>
+				</div>
+ 
+                <input type="submit" value="Log in" class="btn btn-primary btn-large btn-block" >
+			    <br>
+			</div>
+		</div>
+	</div>
+		</form>
+	{% endif %}
+	<body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>Smart scan</title>
+	</head>
+
+	<style>
+		body {
+			text-align:center;
+
+		}
+
+		a {
+
+			color:black;
+		}
+
+		img {
+
+			border : 2px solid black;
+			border-radius: 15px;
+			width: 640px;
+			height: 480px;
+		}
+
+
+	</style>
+
+	<body>
+		<h1><a href="/new">Add Book</a></h1>
+		<hr/>
+		<img src = "{{ url_for('video_feed') }}" alt = "BarCode Scanner" >
+	</body>
+
+
+
+
+
+</html>
